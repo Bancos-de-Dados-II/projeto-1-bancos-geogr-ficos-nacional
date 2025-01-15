@@ -3,14 +3,14 @@ import { useForm } from "react-hook-form";
 import "../assets/styles/Login.css";
 import logo from "../assets/icons/LOGO-CZ.png";
 
+import { validationInputs } from "../utils/Validation";
+
 function Login() {
-    const { register, handleSubmit } = useForm(); 
+    const { register, handleSubmit,onSubmit, formState: { errors } } = useForm();
 
     //register: identifica os campos do formulário
     //handlesubmit: manipula os diados
-    const onSubmit = (data) => {
-        console.log(data);
-    };
+   // const onSubmit = (data) => {console.log(data);};
 
     return (
         <div className="container"><img src={logo} alt="Logo da aplicação" className="logo" />
@@ -24,8 +24,10 @@ function Login() {
                             id="name"
                             name="name"
                             className="form-control"
-                            {...register("name")}
+                            {...register("name", validationInputs.name)}
                         />
+                       {/* {errors.name && <p className="error-message">{errors.name.message}</p>}*/}
+                        
                     </div>
 
                     <div className="form-group">
@@ -35,8 +37,9 @@ function Login() {
                             id="email"
                             name="email"
                             className="form-control"
-                            {...register("email")}
+                            {...register("email", validationInputs.email)}
                         />
+                        {/*{errors.email && <p className="error-message">{errors.email.message}</p>}*/}
                     </div>
 
                     <div className="form-group">
@@ -46,8 +49,10 @@ function Login() {
                             id="password"
                             name="password"
                             className="form-control"
-                            {...register("password")}
+                            {...register("password", validationInputs.password)}
+                            
                         />
+                         {errors.password && <p className="error-message">{errors.password.message}</p>}
                     </div>
 
                     <div className="form-group button-group">

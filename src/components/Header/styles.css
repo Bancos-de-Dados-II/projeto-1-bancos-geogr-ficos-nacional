@@ -1,0 +1,22 @@
+.header-container {
+    padding: 0 30px;
+    margin-top: 5px;
+}
+
+.header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-nav-container {
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+    margin-top: 40px;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,14 @@
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #D91E1E;
+    min-height: 70px;
+    align-items: center;
+}
+
+.footer-container {
+    color: #fff;
+    font-weight: 600;
+    font-size: .9rem;
+}

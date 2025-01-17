@@ -2,6 +2,8 @@
     height: 500px;
     width: 70%;
     margin: 50px auto;
+    border: 1px #444 solid;
+    border-radius: 5px;
 }
 
 .coment-session {

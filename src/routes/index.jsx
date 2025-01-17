@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import Categorias from "./Categorias";
-import Login from "./Login";
-import Categorias from "./Categorias";
+import Login from "../pages/Login";
+import Categorias from "../pages/Categories";
 import Home from "../pages/Home";
 //telas ---
 
@@ -12,7 +12,8 @@ export default function App() {
     <Router>
       <Routes>
         
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/categories" element={<Categorias />} />
         {/*
         Exemplo de rota: path = caminho no componente Link e elemente é a página a ser exibida
         <Route path="/search" element={}/>*/}

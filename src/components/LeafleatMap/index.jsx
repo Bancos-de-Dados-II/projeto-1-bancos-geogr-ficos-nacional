@@ -2,11 +2,12 @@ import Leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect } from "react";
 import "./styles.css"
+import SearchLocation from "../SearchLocation";
 
 export default function LeafletMap() {
   useEffect(() => {
 
-    const map = Leaflet.map("map");
+    const map = Leaflet.map("map").setMinZoom(2);
 
     Leaflet.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -14,7 +15,7 @@ export default function LeafletMap() {
     }).addTo(map);
 
     //método que pega a localização do usuário
-    map.locate({ setView: true, maxZoom: 16, watch: true, enableHighAccuracy: true });
+    map.locate({ setView: true, watch: true, enableHighAccuracy: true });
 
     //quando a localização é encontrada, a setamos no mapa
     map.on("locationfound", (location) => {
@@ -24,8 +25,10 @@ export default function LeafletMap() {
       .openPopup();
     });
 
+    //caso o usuário não permita um alerta é emitido (substituir por um pop-up)
     map.on("locationerror", (err) => {
         console.log("Error ao buscar posição", err.message);
+        alert("Permita acesso a sua localização para uma experiência personalizada :)")
     })
 
     return () => {
@@ -37,8 +40,12 @@ export default function LeafletMap() {
     <section>
 
         <div className="coment-session">
-          <h2>Explore</h2>
-          <p>Encontre locais e viva experiências inesquecíveis</p>
+          <div>
+            <h2>Explore</h2>
+            <p>Encontre locais e viva experiências inesquecíveis</p>
+          </div>
+
+          <SearchLocation />
         </div>
 
         <div id="map"></div>

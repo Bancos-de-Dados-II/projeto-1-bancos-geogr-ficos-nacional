@@ -1,0 +1,30 @@
+.searchlocation-container {
+    background-color: #e6e6e6;
+    padding: 3px 10px;
+    border-radius: 15px;
+}
+
+.searchlocation-container > form{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+
+.searchlocation-container input::placeholder {
+    font-size: .9rem;
+    color: #222;
+}
+
+.searchlocation-container input {
+    padding: 5px 3px;
+    background-color: transparent;
+    border: none;
+    color: #222;
+    margin-bottom: 1.5px;
+}
+
+.searchlocation-container button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

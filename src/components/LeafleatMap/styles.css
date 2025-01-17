@@ -1,0 +1,15 @@
+#map {
+    height: 500px;
+    width: 70%;
+    margin: 50px auto;
+    border: 1px #444 solid;
+    border-radius: 5px;
+}
+
+.coment-session {
+    margin: 50px 200px 0 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

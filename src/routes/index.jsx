@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "../pages/Login";
 import Categorias from "../pages/Categories";
 import Home from "../pages/Home";
+import Cadastro from "../pages/Cadastro";
 //telas ---
 
 //rotas para paginação entre telas
@@ -14,6 +15,7 @@ export default function App() {
         
         <Route path="/login" element={<Login />} />
         <Route path="/categories" element={<Categorias />} />
+        <Route path="/cadastro" element={<Cadastro />} />
         {/*
         Exemplo de rota: path = caminho no componente Link e elemente é a página a ser exibida
         <Route path="/search" element={}/>*/}

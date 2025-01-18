@@ -1,29 +1,28 @@
 
-.login-body{
+.cadastro-body{
     background-color:#E4E4E4;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 20px;
+    background: linear-gradient(100deg, #D91E1E, #ec7676);
+
+ 
 }
-.login-container{
+.cadastro-container{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    
-    
+    padding: 20px;
+  
 }
 
- .login-logo{
-    height: 170px;
-    width: 170px;
-    max-width: 100%; 
-}
 
-.login-form{
+
+.cadastro-form{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -36,18 +35,20 @@
     height: 320px;
     gap: 28px;
     
+    
+    
 }
 
 
-.login-input{
-    background-color: #f0f0f0;
+.cadastro-input{
+    background-color: #F0F0F0;
     width: 280px;
     height: 20px;
    
     
 }
 
-.login-submit-button{
+.cadastro-submit-button{
     background-color:#D91E1E;
     cursor: pointer;
     margin-top: 18px;
@@ -55,22 +56,22 @@
     
 }
 
- .login-input, .login-submit-button{
+ .cadastro-input, .cadastro-submit-button{
     border-style: none;
     padding: 10px;
     border-radius: 3px;
     font-size: 14px;
     
  }
- .login-input:focus{
+ .cadastro-input:focus{
     outline: none;
     border:2px solid #D91E1E;
  }
 
-.login-submit-button:hover{
-    transform: scale(1.05);
+.cadastro-submit-button:hover{
+    transform: scale(1.05);  
 }
-.login-error-message{
+.cadastro-error-message{
     color: #D91E1E;
     font-size: 12px;
 }

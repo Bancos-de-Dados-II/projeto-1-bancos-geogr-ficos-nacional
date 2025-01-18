@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@prisma/client": "^6.2.1",
     "cra-template": "1.2.0",
     "dotenv": "^16.4.7",
-    "pg": "^8.13.1",
     "leaflet": "^1.9.4",
+    "pg": "^8.13.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",

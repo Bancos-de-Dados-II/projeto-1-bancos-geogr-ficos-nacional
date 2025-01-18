@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 import { validationInputs } from "../../utils/Validation";
 
@@ -61,7 +62,12 @@ function Login() {
                         </button>
                     </div>
                 </form>
+               
             </div>
+            <p className="login-count">
+            Não tem uma conta? <Link className="login-link-cadastro" to="/cadastro">Crie aqui</Link>
+                </p>
+
         </div>
         </div>
     );

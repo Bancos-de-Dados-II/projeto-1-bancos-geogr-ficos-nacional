@@ -1,0 +1,10 @@
+.ExplorarPaginaPrincipal{
+    display: flex;
+    flex-direction: column;
+}
+.ExplorarConteudo{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

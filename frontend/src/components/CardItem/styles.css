@@ -1,0 +1,56 @@
+.Categoria-page{
+    display: flex;
+    flex-direction: column;
+}
+.Categoria-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Categoria-imgEText{
+    display: flex;
+    flex-direction: row;
+    padding-left: 80px;
+    padding-bottom:80px;
+}
+.Categoria-title{
+    padding-bottom: 40px;
+}
+.Categoria-Img{
+    margin-right: 50px;
+    margin-top: 30px;
+}
+.ImgCultura{
+    width: 300px;
+}
+.Categoria-Text{
+    margin-right: 100px; 
+}
+.Categoria-subtitle{
+    margin-bottom: 30px;
+}
+.Categoria-description{
+    margin-bottom: 30px;
+    margin-right: 500px;
+}
+.Categoria-buttonMap{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+    background-color: #D9D9D9;
+  }
+  .Categoria-buttonContainer{
+    margin-top: 35px;
+    background-color: #5A5959;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.Categoria-button{
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background-color: #5A5959;
+    border: none;
+}

@@ -6,11 +6,43 @@ import { Link } from "react-router-dom";
 import { validationInputs } from "../../utils/Validation";
 
 function Login() {
-    const { register, handleSubmit,onSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    //register: identifica os campos do formulário
-    //handlesubmit: manipula os diados
-   // const onSubmit = (data) => {console.log(data);};
+    //implementação com a api - salvando um novo usuário
+    const onSubmit = async (data) => {
+        const userEmail = data.email;
+
+        console.log(data);
+
+        console.log(userEmail);
+
+        //buscar senha e validar
+        const request = new Request(`http://localhost:5055/users/${userEmail}`);
+
+        const response = await fetch(request);
+        const jsonContent = await response.json();
+
+        console.log(jsonContent)
+        //se ok, redirecionar e salvar dados no Redis
+
+        //validando senha
+        if (jsonContent.password === data.password) {
+            //redirecionando
+            window.location.href = "/home"
+            //salvando no redis
+            const request = new Request('http://localhost:5055/redis', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(jsonContent)
+            })
+
+            await fetch(request);
+        } else {
+            alert("SENHA ERRADA PAIZÃO")
+        }
+    }
 
     return (
         <div className="login-body">

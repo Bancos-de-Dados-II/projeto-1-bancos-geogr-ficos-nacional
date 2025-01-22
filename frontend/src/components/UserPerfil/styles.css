@@ -7,9 +7,41 @@
     padding: 5px 10px;
     margin: 0;
     background-color: #e6e6e6;
-    border-radius: 20%;
+    border-radius: 5%;
+}
+
+.profile-container {
+    position: relative;
+}
+
+.hamburguer-menu {
+    cursor: pointer;
 }
 
 .userperfil-container > p {
     margin: 0;
+}
+
+.options-menu-user {
+    font-size: .8em;
+    margin: 0;
+    background-color: #e6e6e6;
+    border-radius: 10%;
+    padding: 5px 20px;
+    margin-top: 10px;
+    position: absolute;
+    right: 0;
+}
+
+.options-menu-user > p {
+    margin: 0;
+}
+
+.options-menu-user a {
+    color: #222;
+    cursor: pointer;
+}
+
+.display-on {
+    display: none;
 }

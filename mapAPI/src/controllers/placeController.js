@@ -1,4 +1,5 @@
 
+import { request, response } from 'express';
 import * as placeService from '../services/placeServices.js';
 
 
@@ -25,7 +26,9 @@ export const createPlace = async (req, res) => {
   try {
     const { name, description, category, coordinates } = req.body;
     const newPlace = await placeService.createPlace(name, description, category, coordinates);
-    res.status(201).json({ message: "Lugar criado com sucesso", data: newPlace });
+    res.status(201).send({
+      result: newPlace
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -62,5 +65,55 @@ export const deletePlacesByCategory = async (req, res) => {
   }
 };
 
+//retorna todos os locais
+export const findAllPlaces = async (request, response, next) => {
+
+  try {
+    const allPlaces = await placeService.findAllPlacesService();
+    response.status(200).send(allPlaces);
+
+  } catch (error) {
+    response.status(400).send({
+      erro: error.message
+    })
+  }
+}
+
+//remoção de locais com base no nome e nas coordenadas
+export const removeByNameAndCategorie = async (request, response, next) => {
+  const { name, coordinates } = request.params;
+
+  const coordinatesIndiviadl = {
+    longitude: parseFloat(coordinates.split(',')[0]),
+    latitude: parseFloat(coordinates.split(',')[1])
+  }
 
 
+  try {
+    const deleted = await placeService.removeByNameAndCoordinate(name, coordinatesIndiviadl.latitude, coordinatesIndiviadl.longitude);
+    response.status(200).send({
+      result: deleted
+    });
+  } catch(error) {
+    response.status(400).send({
+      erro: error
+    })
+  }
+
+}
+
+export const getByName = async (request, response, next) => {
+  try {
+    const local = await placeService.findByName(request.params.name)
+    response.status(200).send(
+      {
+        result: local
+      }
+    )
+    
+  } catch(error) {
+    response.status(400).send({
+      erro: error
+    })
+  }
+}

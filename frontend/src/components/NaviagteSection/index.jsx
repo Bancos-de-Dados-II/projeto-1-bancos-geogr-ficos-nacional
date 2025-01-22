@@ -17,7 +17,7 @@ export default function NavigationSection() {
                 <Link to={"/"}>
                     <CardNavigateSection iconPath={"/icons/compass.png"} title={"EXPLORAR"} description={"Descubra, pesquise e analise lugares que você tem em mente"}/>
                 </Link>
-                <Link to={"/"}>
+                <Link to={"/categories"}>
                     <CardNavigateSection iconPath={"/icons/list-task.png"} title={"CATEGORIAS"} description={"Explore locais com base em categorias pré-definidas, como : hotel, restaurante ou parques"}/>
                 </Link>
             </div>

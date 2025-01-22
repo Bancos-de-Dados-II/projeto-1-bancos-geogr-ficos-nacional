@@ -13,15 +13,15 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        
+   
+        <Route path="/" element={<Login />}
         <Route path="/PopUp" element={<PopUp/>}/>
-        <Route path="/login" element={<Login />} />
         <Route path="/categories" element={<Categorias />} />
         <Route path="/cadastro" element={<Cadastro />} />
         {/*
         Exemplo de rota: path = caminho no componente Link e elemente é a página a ser exibida
         <Route path="/search" element={}/>*/}
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </Router>
   );

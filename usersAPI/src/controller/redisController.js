@@ -5,7 +5,6 @@ import { getDataSectionService, setImMemory, deleteDataSectionService } from "..
 const setDataSection = async (request, response, next) => {
 
     try {
-
         const dataResponse = await setImMemory(request.body);
         response.status(201).send(dataResponse)
     } catch (error) {

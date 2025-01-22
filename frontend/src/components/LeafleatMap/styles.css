@@ -47,11 +47,6 @@
     font-weight: normal;
 }
 
-.display-none {
-    display: none;
-    opacity: 0;
-}
-
 .add-local {
     display: flex;
     flex-direction: column;
@@ -93,4 +88,14 @@
     align-self: flex-start;
     margin-top: 30px;
     color: #333;
+}
+
+.display-none {
+    display: none;
+    opacity: 0;
+}
+
+.point-info > p{
+    font-size: .8rem;
+    font-weight: 800;
 }

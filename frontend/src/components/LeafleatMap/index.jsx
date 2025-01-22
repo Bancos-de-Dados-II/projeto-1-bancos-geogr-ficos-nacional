@@ -1,4 +1,4 @@
-import Leaflet from "leaflet";
+import Leaflet, { map } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
 import "./styles.css"
@@ -9,11 +9,14 @@ import { validationinputAddCoordinate } from "../../utils/addPointVallidation";
 export default function LeafletMap() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register: registerRemove, handleSubmit: handleSubmitRemove, formState: { errors: errorsRemove } } = useForm();
 
   const [visibleConfig, setVisibleConfig] = useState(true);
   const [isAdmin, setisAdmin] = useState(false);
   const [addPointVisible, setAddPointVisible] = useState(true);
-  const [itemIsAdded, setItemAdded]= useState(false);
+  const [itemModified, setItemModified]= useState(false);
+  const [removePoitForm, setRemovePointForm] = useState(true);
+  const [mapInstance, setMapInstance] = useState(null);
 
   //definindo visibilidade dos cards
   const handleClickAddPint = () => {
@@ -25,7 +28,7 @@ export default function LeafletMap() {
   }
 
   //salvando local
-  const onSubmit = async (data) => {
+  const onSubmitAdd = async (data) => {
 
       const request = new Request("http://localhost:5056/places", {
         method: 'POST',
@@ -39,15 +42,33 @@ export default function LeafletMap() {
       const inJson = await response.json();
 
       if (response != null) {
-        console.log(inJson)
+        alert(inJson.result)
       }
 
       console.log("Error: " + response);
   }
 
-  useEffect(() => {
+  //remover local do banco
+  const onSubmitRemove = async (data) => {
+    const { name, coordinates } = data;
+
+    const request = new Request(`http://localhost:5056/places/${name}/${coordinates}`, {
+      method: 'DELETE'
+    });
+
+    const response = await fetch(request);
+    const jsonContent = await response.json();
+
+    alert(jsonContent.result);
+
+  }
+
+
+  useEffect((flag) => {
 
     const map = Leaflet.map("map").setMinZoom(2);
+
+    setMapInstance(map)
 
     Leaflet.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
@@ -104,8 +125,19 @@ export default function LeafletMap() {
 
               layer.setIcon(icon);
 
+              const coordenadas = JSON.parse(feature.properties.coordinates);
+
+              const outputMsg = `
+                 <div className="point-info">
+                   <p>Nome: ${feature.properties.name}</p>
+                   <p>Descrição: ${feature.properties.description}</p>
+                   <p>Coordenadas: ${coordenadas.coordinates}</p>
+                 </div>
+                 
+              `
+
               //adicionar html aqui
-              layer.bindPopup(feature.properties.name);
+              layer.bindPopup(outputMsg);
             }
           }
         }).addTo(map);
@@ -133,13 +165,18 @@ export default function LeafletMap() {
     return () => {
       map.remove();
     };
-  }, [itemIsAdded]);
+  }, [itemModified]);
 
-  const handleAddLocal = () => {
+  const handleModifiedLocal = () => {
     setTimeout(() => {
-      setItemAdded(!itemIsAdded);
+      setItemModified(!itemModified);
     }, 1700)
   }
+
+  const handleRemoveButton = () => {
+    setRemovePointForm(!removePoitForm);
+  }
+
 
   return (
     <section>
@@ -149,25 +186,25 @@ export default function LeafletMap() {
             <p>Encontre locais e viva experiências inesquecíveis</p>
           </div>
 
-          <SearchLocation />
+          <SearchLocation map={mapInstance}/>
         </div>
 
         <div id="map"></div>
 
         {
           isAdmin ? (
-            <div className="configuration-container">
+          <div className="configuration-container">
 
             <button onClick={handleClickConfig}>Configurações</button>
 
             <div className={visibleConfig ? 'display-none' : ''}>
               <button onClick={handleClickAddPint}>Adicionar</button>
-              <button>Remover</button>
+              <button onClick={handleRemoveButton}>Remover</button>
               <button>Editar</button>
             </div>
 
             <section className={`add-local ${addPointVisible ? "display-none": ""}`}>
-              <form action="#" onSubmit={handleSubmit(onSubmit)}>
+              <form action="#" onSubmit={handleSubmit(onSubmitAdd)}>
 
                 <div>
                   <div>
@@ -199,7 +236,32 @@ export default function LeafletMap() {
 
                 {errors.password && <p className="login-error-message">{errors.password.message}</p>}
 
-                <button onClick={handleAddLocal}>Salvar local</button>
+                <button onClick={handleModifiedLocal}>Salvar local</button>
+              </form>
+            </section>
+
+
+            <section className={`add-local ${removePoitForm ? "display-none": ""}`}>
+              <form action="#" onSubmit={handleSubmitRemove(onSubmitRemove)}>
+
+                <div>
+                  <div>
+                    <label htmlFor="name">Nome</label>
+
+                    <input type="text" name="name" id="name"
+                    {...registerRemove("name", validationinputAddCoordinate.name)}/>
+                  </div>
+
+                  <div>
+                    <label htmlFor="coordinates">Coordenadas</label>
+
+                    <input type="text" name="coordinates" id="coordinates"
+                    {...registerRemove("coordinates", validationinputAddCoordinate.coordinates)}/>
+                  </div>
+
+                </div>
+
+                <button type="submit" onClick={handleModifiedLocal}>Remover local</button>
               </form>
             </section>
           </div>

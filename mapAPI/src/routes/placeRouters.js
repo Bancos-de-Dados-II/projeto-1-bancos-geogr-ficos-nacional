@@ -7,6 +7,7 @@ const placeRouter = express.Router();
 placeRouter.get("/all", placeController.findAllPlaces)
 placeRouter.get("/", placeController.getAllPlaces);
 placeRouter.get("/category/:category", placeController.getPlaceByCategory);
+placeRouter.get("/:name", placeController.getByName);
 
 //post
 placeRouter.post("/", placeController.createPlace);
@@ -16,6 +17,7 @@ placeRouter.put("/:id", placeController.updatePlace);
 
 //delete
 placeRouter.delete("/:id", placeController.deletePlace);
+placeRouter.delete("/:name/:coordinates", placeController.removeByNameAndCategorie)
 placeRouter.delete("/category/:category", placeController.deletePlacesByCategory);
 
 export default placeRouter;

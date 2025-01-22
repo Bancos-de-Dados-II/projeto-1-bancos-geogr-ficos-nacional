@@ -49,9 +49,12 @@
 
 .login-submit-button{
     background-color:#D91E1E;
+    color: #fff;
+    font-weight: 600;
     cursor: pointer;
     margin-top: 18px;
     width: 280px;
+    transition: .5s;
     
 }
 
@@ -77,4 +80,9 @@
 .login-link-cadastro{
     color: #D91E1E;
     
+}
+
+.login-container h1 {
+    color: #222;
+    font-size: 1.8rem;
 }

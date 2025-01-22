@@ -40,28 +40,17 @@ function Login() {
 
             await fetch(request);
         } else {
-            alert("SENHA ERRADA PAIZÃO")
+            alert("Senha incorreta ou usuário não cadastrado!")
         }
     }
 
     return (
         <div className="login-body">
-        <div className="login-container"><img src="/icons/LOGO-CZ.png" alt="Logo da aplicação" className="login-logo" />
+        <div className="login-container">
+            <h1>LOGIN</h1>
             <div className="login-form-container">
 
                 <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="login-form-group">
-                        <label htmlFor="name">Nome</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            className="login-input"
-                            {...register("name", validationInputs.name)}
-                        />
-                       {/* {errors.name && <p className="error-message">{errors.name.message}</p>}*/}
-                        
-                    </div>
 
                     <div className="form-group">
                         <label htmlFor="email" >Email</label>

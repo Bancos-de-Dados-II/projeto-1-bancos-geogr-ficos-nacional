@@ -6,10 +6,11 @@
     justify-content: center;
     align-items: center;
     padding: 0 20px;
-    background: linear-gradient(100deg, #D91E1E, #ec7676);
+    background-color:#E4E4E4;
 
  
 }
+
 .cadastro-container{
     display: flex;
     justify-content: center;
@@ -40,6 +41,8 @@
 }
 
 
+
+
 .cadastro-input{
     background-color: #F0F0F0;
     width: 280px;
@@ -53,7 +56,29 @@
     cursor: pointer;
     margin-top: 18px;
     width: 280px;
+    font-weight: 600;
+    color: #fff;
+    transition: .5s;
+}
+
+.cancel-button {
+    cursor: pointer;
+    margin-top: 18px;
+    width: 280px;
+    background-color: #666;
+    border-style: none;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .5s;
     
+
+}
+
+.cancel-button > a {
+    color: #fff;
+    text-decoration: none;
 }
 
  .cadastro-input, .cadastro-submit-button{
@@ -70,8 +95,20 @@
 
 .cadastro-submit-button:hover{
     transform: scale(1.05);  
+    transition: .4s;
 }
 .cadastro-error-message{
     color: #D91E1E;
     font-size: 12px;
 }
+
+.cadatro-title {
+    color: #222;
+    font-size: 1.8rem;
+}
+
+.cancel-button:hover {
+    transform: scale(1.05);
+    transition: .4s;
+}
+

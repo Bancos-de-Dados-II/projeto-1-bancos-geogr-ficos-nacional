@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "./styles.css";
 import { validationInputs } from "../../utils/Validation";
+import { Link } from "react-router-dom";
 
 function Cadastro() {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -29,13 +30,14 @@ function Cadastro() {
         } else {
             //ações se surgir um erro na criação da conta
             //informar erro
+            alert('Falha ao criar: email já cadastrado')
         }
     }
   
     return (
         <div className="cadastro-body">
         <div className="cadastro-container">
-            <h1 className="cadatro-title">Cadastre-se</h1>
+            <h1 className="cadatro-title">CADASTRO</h1>
             <div className="cadastro-form-container">
 
                 <form className="cadastro-form" onSubmit={handleSubmit(onSubmit)}>
@@ -80,6 +82,10 @@ function Cadastro() {
                     <div className="cadastro-form-group cadastro-button-group">
                         <button type="submit" className="cadastro-submit-button">
                             Cadastrar
+                        </button>
+
+                        <button type="reset" className="cancel-button">
+                            <Link to={'/'}>Cancelar</Link>
                         </button>
                     </div>
                 </form>

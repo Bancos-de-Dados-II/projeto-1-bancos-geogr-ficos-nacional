@@ -1,6 +1,7 @@
 import { findByEmailService, findRoleByEmailService, saveUsersService } from "../service/usersService.js";
 
 const save = async (request, response, next) => {
+    //espera receber um JSON com: name, email e password
     const usersData = request.body;
 
     //o service pode gerar um exceção caso o prima não salve o usuário corretamente
@@ -17,7 +18,7 @@ const save = async (request, response, next) => {
 }
 
 const findByEmail = async (request, response, next) => {
-    const {email} = request.query;
+    const {email} = request.params;
 
     try {
         const userFinded = await findByEmailService(email);
@@ -25,7 +26,8 @@ const findByEmail = async (request, response, next) => {
         response.status(200).send({
             name: userFinded.name,
             email: userFinded.email,
-            password: userFinded.password          
+            password: userFinded.password,
+            role: userFinded.role          
         })
     } catch(error) {
         response.status(404).send({

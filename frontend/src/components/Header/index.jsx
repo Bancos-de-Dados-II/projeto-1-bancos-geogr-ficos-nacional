@@ -20,7 +20,7 @@ export default function Header() {
                 <Link to={"/"} >
                     <HeaderButton imgPath={"/icons/compass.png"} text={"Explorar"} />
                 </Link>
-                <Link to={"/"} >
+                <Link to={"/categories"} >
                     <HeaderButton imgPath={"/icons/list-task.png"} text={"Categorias"} />
                 </Link>
             </nav>

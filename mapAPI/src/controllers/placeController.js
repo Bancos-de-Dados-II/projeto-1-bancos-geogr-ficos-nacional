@@ -1,4 +1,5 @@
 
+import { request } from 'express';
 import * as placeService from '../services/placeServices.js';
 
 
@@ -61,6 +62,20 @@ export const deletePlacesByCategory = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+//retorna todos os locais
+export const findAllPlaces = async (request, response, next) => {
+
+  try {
+    const allPlaces = await placeService.findAllPlacesService();
+    response.status(200).send(allPlaces);
+
+  } catch (error) {
+    response.status(400).send({
+      erro: error.message
+    })
+  }
+}
 
 
 

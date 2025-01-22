@@ -1,8 +1,23 @@
 import prismaClient from "../prisma/client.js"
 import { setImMemory } from "./redisService.js";
 
+const checkIsUserExist = async (userEmail) => {
+    const user = await prismaClient.user.findFirst({
+        where: {
+            email: userEmail
+        }
+    })
+
+    return user != null;
+}
+
 const saveUsersService = async (userData) => {
     //considera que não são nulos
+    if (!checkIsUserExist(userData.email)) {
+        //erro de conflito
+        throw new Error("409")
+    }
+
     const userSaved = await prismaClient.user.create({
         data: userData
     })
@@ -11,7 +26,7 @@ const saveUsersService = async (userData) => {
         return userSaved;
     }
 
-    throw new Error("Ocorreu um erro ao savar o usuário, tente novamente");
+    throw new Error("400");
 }
 
 //considerá que essa rota será usada exclusivamente para o login
@@ -24,9 +39,6 @@ const findByEmailService = async (emailToFind) => {
 
     //setar dados de sessão no redis
     if (userFinded != null) {
-        //dados do usuário salvos em sessão
-        setImMemory(userFinded);
-
         return userFinded;
     }
 

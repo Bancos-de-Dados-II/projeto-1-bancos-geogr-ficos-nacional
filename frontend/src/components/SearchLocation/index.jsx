@@ -1,11 +1,11 @@
-import { useState } from "react";
+
 import "./styles.css"
 import { useForm } from "react-hook-form";
 import { findMap } from "../../utils/findMap";
 
 export default function SearchLocation({map}) {
 
-      const { register, handleSubmit, formState: { errors } } = useForm();
+      const { register, handleSubmit } = useForm();
 
       const onSubmit = async (data) => {
 

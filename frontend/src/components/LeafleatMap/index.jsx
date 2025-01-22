@@ -1,4 +1,4 @@
-import Leaflet, { map } from "leaflet";
+import Leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from "react";
 import "./styles.css"
@@ -9,7 +9,7 @@ import { validationinputAddCoordinate } from "../../utils/addPointVallidation";
 export default function LeafletMap() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { register: registerRemove, handleSubmit: handleSubmitRemove, formState: { errors: errorsRemove } } = useForm();
+  const { register: registerRemove, handleSubmit: handleSubmitRemove } = useForm();
 
   const [visibleConfig, setVisibleConfig] = useState(true);
   const [isAdmin, setisAdmin] = useState(false);

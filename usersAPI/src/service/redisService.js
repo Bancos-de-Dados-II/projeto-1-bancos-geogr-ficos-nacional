@@ -5,7 +5,7 @@ const setImMemory = async (data) => {
     const response = await redisClient.set('user-data-section', JSON.stringify(data), 'EX', 3600);
 
     if (response == "OK") {
-        console.log(`user data persist in memory: ${response}`);
+        return data;
     } else {
         throw new Error(`Failed to try save user data in memory with redis`);
     }
@@ -23,4 +23,15 @@ const getDataSectionService = async () => {
     throw new Error("Não foi possível realizar a busca dos dados de sessão")
 }
 
-export { setImMemory, getDataSectionService }
+//removendo usuário
+const deleteDataSectionService = async () => {
+    const isRemoved = await redisClient.del('user-data-section');
+
+    if (isRemoved == 1) {
+        return 1;
+    }
+
+    throw new Error("Falha ao remover dados de sessão do usuário");
+}
+
+export { setImMemory, getDataSectionService, deleteDataSectionService }

@@ -4,3 +4,9 @@
     background-color: #fff;
     border-radius: 5px;
 }
+
+.slide-container > p {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 100px
+}

@@ -1,4 +1,19 @@
-import { getDataSectionService } from "../service/redisService.js";
+import { request, response } from "express";
+import { getDataSectionService, setImMemory, deleteDataSectionService } from "../service/redisService.js";
+
+//salvando dados
+const setDataSection = async (request, response, next) => {
+
+    try {
+        const dataResponse = await setImMemory(request.body);
+        response.status(201).send(dataResponse)
+    } catch (error) {
+
+        response.status(400).send({
+            erro: error.message
+        })
+    }
+}
 
 const getDataSection = async (request, response, next) => {
 
@@ -13,4 +28,19 @@ const getDataSection = async (request, response, next) => {
     }
 }
 
-export { getDataSection }
+//removendo os dados de sessão
+const removeDataSection = async (request, response, next) => {
+
+    try {
+        const remove = await deleteDataSectionService();
+        response.status(200).send({
+            deleted: remove
+        })
+    } catch (error) {
+        response.status(400).send({
+            erro: error.message
+        })
+    }
+}
+
+export { getDataSection, setDataSection, removeDataSection }

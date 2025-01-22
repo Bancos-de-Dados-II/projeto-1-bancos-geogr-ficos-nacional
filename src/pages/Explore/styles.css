@@ -5,6 +5,35 @@
 .ExplorarConteudo{
     margin-top: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+}
+.ExplorarCards{
+    margin-top: 100px;
+}
+
+.ExplorarTitle{
+    display: flex;
+    background-color: #D91E1E;
+    position: relative;
+    width:100vw;
+    margin-bottom: 0px;
+    height: 150px;
     justify-content: center;
+}
+.ExplorarContent{
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+    padding: 10px; 
+    box-sizing: border-box;
+  
+    
+}
+.ExplorarSetaEsquerda{
+    padding-left: 50px;
+}
+.ExplorarSetaDireita{
+    padding-right: 50px;
 }

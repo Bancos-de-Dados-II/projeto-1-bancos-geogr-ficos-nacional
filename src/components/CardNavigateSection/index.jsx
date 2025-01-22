@@ -2,7 +2,7 @@ import "./styles.css"
 
 export default function CardNavigateSection( {iconPath, title, description} ) {
     return (
-        <section className="cardnavigation-container">
+        <section className="cardItem-container">
             <img src={iconPath} alt="icon" />
             <div>
                 <h3>{title}</h3>

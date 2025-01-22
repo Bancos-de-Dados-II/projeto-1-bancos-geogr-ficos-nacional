@@ -1,7 +1,8 @@
 
 .categorias{
     display: flex;
-   justify-content: center;
+   justify-content: left;
+   flex-direction: row;
    
 }
 .categoriasi-header{
@@ -14,6 +15,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-left: 450px;
 }
 
 .categorias-grid {
@@ -38,5 +40,11 @@
     cursor: pointer;
     width: 125px;
     height: 112px;
+  }
+.categoriasBack{
+    align-items:self-start;
+    margin-left: 35px;
+    margin-top: 30px;
+    width: 30px;
   }
   

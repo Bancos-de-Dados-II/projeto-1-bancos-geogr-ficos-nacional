@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "./styles.css";
 import { validationInputs } from "../../utils/Validation";
+import { Link } from "react-router-dom";
 
 function Cadastro() {
     const { register, handleSubmit,onSubmit, formState: { errors } } = useForm();
@@ -10,21 +11,14 @@ function Cadastro() {
     return (
         <div className="cadastro-body">
         <div className="cadastro-container">
-            <h1 className="cadatro-title">Cadastre-se</h1>
+        <div className="login-container">
+            <img src="/icons/LOGO-CZ.png" alt="Logo da aplicação" className="login-logo" /> 
+        </div>       
             <div className="cadastro-form-container">
 
                 <form className="cadastro-form" onSubmit={handleSubmit(onSubmit)}>
                     <div className="cadastro-form-group">
-                        <label htmlFor="name">Nome</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            className="cadastro-input"
-                            {...register("name", validationInputs.name)}
-                        />
-                       {/* {errors.name && <p className="error-message">{errors.name.message}</p>}*/}
-                        
+                        <label className="MsgCadastro">Crie um novo Email e Senha</label>
                     </div>
 
                     <div className="cadastro-form-group">
@@ -58,6 +52,9 @@ function Cadastro() {
                         </button>
                     </div>
                 </form>
+                <p className="Cadastro-count">
+                Já possui uma conta? <Link className="cadastro-link-login" to="/login">Faça login</Link>
+            </p>
             </div>
         </div>
         </div>

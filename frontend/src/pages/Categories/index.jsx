@@ -11,7 +11,9 @@ const categorias = [
 function Categorias() {
   return (
     <div className="categorias">
-    
+      <a className="categoriasBack" href="/">
+        <img src="/icons/left-arrow.png"></img>
+      </a>
       <main className="categorias-main">
         <h1>Explorar por categorias</h1>
         <div className="categorias-grid">

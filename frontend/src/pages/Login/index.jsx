@@ -19,16 +19,7 @@ function Login() {
 
                 <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                     <div className="login-form-group">
-                        <label htmlFor="name">Nome</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            className="login-input"
-                            {...register("name", validationInputs.name)}
-                        />
-                       {/* {errors.name && <p className="error-message">{errors.name.message}</p>}*/}
-                        
+                        <label className="MsgLogin">Insira seu email e senha</label>
                     </div>
 
                     <div className="form-group">
